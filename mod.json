@@ -1,29 +1,35 @@
 {
-	"geode": "4.7.0",
+	"geode": "5.0.3",
 	"gd": {
-		"win": "2.2074",
-		"android": "2.2074",
-		"mac": "2.2074",
-		"ios": "2.2074"
+		"win": "2.2081",
+		"android": "2.2081",
+		"mac": "2.2081",
+		"ios": "2.2081"
 	},
 	"version": "v1.4.6",
 	"id": "syzzi.click_between_frames",
 	"name": "Click Between Frames",
 	"developer": "syzzi",
-	"description": "Allows inputs to register between frames.",
-	"dependencies": {
-		"geode.custom-keybinds": {
+	"description": "Allows inputs to register between frames. Fixed for 2.2081 and Geode 5.0.3.",
+	"dependencies": [
+		{
+			"id": "geode.loader",
+			"version": ">=5.0.3"
+		},
+		{
+			"id": "geode.custom-keybinds",
 			"importance": "required",
 			"version": ">=v1.10.0",
 			"platforms": ["win"]
 		}
-	},
-	"incompatibilities": {
-		"zmx.cbf-lite": {
+	],
+	"incompatibilities": [
+		{
+			"id": "zmx.cbf-lite",
 			"importance": "breaking",
 			"version": ">=1.0.0"
 		}
-	},
+	],
 	"tags": [
 		"performance",
 		"gameplay",
@@ -73,7 +79,7 @@
 		},
 		"late-cutoff": {
 			"name": "Late Input Cutoff",
-			"description": "Check for inputs near the end of the frame instead of the start.\n\nSlightly reduces input lag, but also slightly hurts precision. May help if you are experiencing dropped or delayed inputs.",
+			"description": "Check for inputs near the end of the frame instead of the start.\n\nSlayerly reduces input lag, but also slightly hurts precision.",
 			"type": "bool",
 			"default": false,
 			"platforms": ["win"]
@@ -93,40 +99,21 @@
 		},
 		"physics-bypass": {
 			"name": "Enable Physics Bypass",
-			"description": "Reduces stuttering on some FPS values. Active even if \"Disable CBF\" is checked.\n\nTHIS WILL ALTER PHYSICS AND MAY BREAK SOME LEVELS! DON'T USE THIS IF YOUR LIST/LEADERBOARD BANS PHYSICS BYPASS!",
+			"description": "Reduces stuttering on some FPS values. Active even if \"Disable CBF\" is checked.",
 			"type": "bool",
 			"default": false,
 			"platforms": ["win"]
 		},
 		"bypass-mode": {
 			"name": "Physics Bypass Mode",
-			"description": "2.2 mode means as few collision checks per frame as possible (with a minimum of 240 checks per second).\n\n2.1 mode means 4 collision checks per frame at 60fps or above",
+			"description": "2.2 mode means as few collision checks per frame as possible.",
 			"type": "string",
 			"one-of": ["2.2", "2.1"],
 			"default": "2.2",
 			"platforms": ["win"]
-		},
-		"linux-category": {
-			"name": "Linux",
-			"type": "title",
-			"platforms": ["win"]
-		},
-		"wine-workaround": {
-			"name": "Wine Workaround",
-			"description": "Wine doesn't let you get keyboard input between frames, so this is a workaround. However, it may not work properly on some PCs.\n\nOnly disable if experiencing issues (and don't play with keyboard if you disable it).",
-			"type": "bool",
-			"default": true,
-			"requires-restart": true,
-			"enable-if": "saved:you-must-be-on-linux-to-change-this",
-			"platforms": ["win"]
 		}
 	},
 	"links": {
-		"source": "https://github.com/theyareonit/Click-Between-Frames"
-	},
-	"resources": {
-		"files": [
-			"resources/linux-input.so"
-		]
+		"source": "https://github.com"
 	}
 }
